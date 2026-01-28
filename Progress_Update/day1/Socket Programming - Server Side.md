@@ -126,6 +126,13 @@ if (bind(server_fd, (struct sockaddr *)&address, sizeof(address)) < 0) {
 2. `INADDR_ANY`: This is a special constant that tells the server to listen on all available network interfaces (WiFi, Ethernet, etc.). If you only wanted to allow connections from the same machine, you would bind to `127.0.0.1`.
 
 3. **Port Reuse**: If you stop your program and try to restart it immediately, `bind()` might fail with "Address already in use." This is because the OS keeps the port in a `TIME_WAIT` state. You can bypass this using the `SO_REUSEADDR` socket option.
+```cpp
+    if (setsockopt(server_fd, SOL_SOCKET, SO_REUSEADDR | SO_REUSEPORT, &opt, sizeof(opt))) {
+        perror("setsockopt failed");
+        exit(EXIT_FAILURE);
+    }
+```
+![alt text](image.png)
 
 \* **Note**  
 When you're developing and testing network code, you'll quickly run into a frustrating issue: you stop your program, try to run it again, and get a "Bind failed: Address already in use" error.
