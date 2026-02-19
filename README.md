@@ -169,3 +169,6 @@ Refer to [Concepts,UseCases&Tests.md](Concepts,UseCases&Tests.md) for a detailed
 
 You can verify functionality interactively or via scripts. See the test examples in `Concepts,UseCases&Tests.md` or use the provided `test_all.sh` script for end‑to‑end validation.
 
+---
+
+Reference for Socket Programming [Beej’s Guide to Network Programming](https://beej.us/guide/bgnet/).
